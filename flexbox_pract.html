@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning flexbox</title>
+    <style>
+        .flex-container{
+            display: flex;
+            flex-direction: column;
+            flex-direction: unset;
+            flex-flow: column-reverse;
+
+        }
+        div{
+            /* background-color: aliceblue; */
+            width: 79px;
+            border: 15px solid green;
+            padding: 50px;
+            margin: 20px;
+
+        }
+        #one{
+            background-color: aquamarine;
+            border: 15px solid black;
+
+        }
+    </style>
+</head>
+<body>
+    <h2>How to use flexbox</h2>
+    <div class="flex-container">
+        <div>hey</div>
+        <div id="one">hi</div>
+        <div>listen</div>
+    </div>
+</body>
+</html>
