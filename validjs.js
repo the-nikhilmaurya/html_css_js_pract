@@ -2,6 +2,8 @@
 function validateForm(){
     var email = document.forms['myform']['email'].value;
     var password = document.forms['myform']['password'].value;
+    emailvalid(email)
+    passwordvalid(password);
     if((emailvalid(email) == true) &&( passwordvalid(password)) == true){
         return true;
     }
@@ -13,6 +15,7 @@ function validateForm(){
 }
 
 function emailvalid(email){
+    hidagain();
     if (email == ''){
         document.getElementById('input-email').hidden = false;
         return console.log("input email");
@@ -26,6 +29,7 @@ function emailvalid(email){
 }
 
 function passwordvalid(password){
+    hidagain();
     if(password == ''){
         document.getElementById('input-password').hidden = false;
         return console.log("input password");
@@ -45,7 +49,10 @@ document.getElementById('invalid-email').hidden = true;
 document.getElementById('input-password').hidden = true;
 document.getElementById('invalid-password').hidden = true;
 
- function show() {
+function hidagain(){
+    document.getElementById('input-email').hidden = true;
+document.getElementById('invalid-email').hidden = true;
+document.getElementById('input-password').hidden = true;
+document.getElementById('invalid-password').hidden = true;
 
-    document.getElementById().hidden = false;
- }
+}
