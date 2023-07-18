@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hiiii</h1>
+
+    <script>
+
+        function add(n1,n2,callback){
+            callback();
+            console.log(n1+n2);
+        }
+       
+        
+        add(2,3,sayHi);
+        function sayHi(){
+            console.log("hello");
+        }
+        let say =()=>console.log("Namaste...");
+        add(4,4,say);
+        console.log(typeof (say));
+        add(4,4,say);
+        
+    </script>
+</body>
+</html>

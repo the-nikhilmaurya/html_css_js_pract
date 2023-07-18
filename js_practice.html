@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance js </title>
+    <style>
+        th,td{
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="getinfo()" action="#" >
+        <p>
+            <label for="emai">email</label>
+            <input type="email" name="email" id="email">
+        </p>
+        <p>
+            <label for="name">name</label>
+            <input type="text" name="name" id="name">
+
+        </p>
+        <input type="submit" value="getdata">
+    </form>
+
+    <p id="see">
+
+    </p>
+    <table id="list">
+        <thead>
+            <th>email</th>
+            <th>name</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+   <!-- <h1> Starting my advance js journery with the help of yahoo baba and code with harry</h1> -->
+    <script>
+        // using simple function method
+        // let welcome = function(){
+        //     return `heelo nikhil its me`;
+        // }
+
+
+        // //template literals
+        // //using template literal arrowFunction
+        // let welcome = (name,age)  =>{
+        //     return `heelo ${name} its me  ${age} years`;}
+
+
+        // //print statement it will write in the html page itself
+        // document.writeln(welcome("vijay",23));
+        // // document.writeln(typeof welcome());
+        // console.log(typeof welcome)
+        // var age = 12; 
+        // console.log(age);
+
+
+        // rest operator
+
+        // function sum(name,course,...args){
+        //     // console.log(arguments);
+        //     let sum =0;
+        //     for (i in args){
+        //         sum += args[i];
+        //     }
+        //     document.write(`hello ${name} of ${course} : `);
+            
+        //     document.write(sum+`<br>`);
+        // }
+        
+        // sum("","bsc",6,7,8);
+
+        // sum("name","cs",4,8,9);
+
+        //spread operator
+
+        // var arr = [1,2,3,4];
+        // var arr2 = [5,6];
+        // // var arr3 = arr.concat(arr2);
+        // var arr3 = [2,...arr2,...arr,34];
+     
+        //     console.log(arr3);
+        // document.write(arr3);
+
+        // var obj1 = {name:"nikhil"};
+        // var obj2 = {age:23};
+        // var obj3 = {...obj1,obj2};
+        // document.write(obj3.name);
+        // console.log(obj3);
+
+
+        // object literal
+
+        // let n = "name";
+        // let course= "bsc";
+        // var obj = {
+        //     [n]:"nikhil",
+        //     age:22,
+        //     course,
+        //     detail(){
+        //         return `${this.name} is a student of age ${this.age}`
+        //     }
+        // }
+        // console.log(obj.detail());
+        
+        // console.log(obj);
+
+        // const regex = /very/g;
+        // const text = "he is a very very  very boy";
+        // console.log(text.replace(regex,"good"));
+
+        // function print(n){
+        //     if(n>5){
+        //         return;
+        //     }
+        //     document.writeln(n);
+        //     console.log(n);
+        //     n++;
+        //     print(n);
+        // }
+        // print(1);
+
+            var selectedrow = null;
+
+            function getinfo(e){
+                event.preventDefault();
+                var formdata = readData();
+                if(selectedrow==null){
+                    insertdata(formdata);
+                }
+                else{
+
+                }
+
+            }
+            function readData()
+            {
+                var formdata={};
+                formdata["email"] = document.getElementById("email").value;
+                console.log(document.getElementById("email").value);
+                formdata["name"] = document.getElementById("name").value;
+                return formdata;
+                
+            }
+            function insertdata(data){
+                console.log(data);
+                var table = document.getElementById("list").getElementsByTagName("tbody")[0];
+                
+                var newrow = table.insertRow(table.length);
+                console.log("table.length"+table.length);
+                console.log(newrow);
+                var cell0 = newrow.insertCell(0);
+                    cell0.innerHTML = data.email;
+                console.log(data.email);
+                var cell1 = newrow.insertCell(1);
+                    cell1.innerHTML = data.name;
+            }
+            // console.los
+            
+
+   
+    </script>
+    
+
+</body>
+
+    
+
+</html>

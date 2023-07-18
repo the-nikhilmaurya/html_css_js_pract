@@ -20,7 +20,7 @@ p.then((response)=>{
         for (x in data){
         
             str += `<tr>
-            <td>${data[x].name}</td>
+            <td>${data[x].namee}</td>
             <td>${data[x].office}</td>
             <td>${data[x].position}</td>
             <td>${data[x].salary}</td>
