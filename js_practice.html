@@ -149,6 +149,7 @@
             function insertdata(data){
                 console.log(data);
                 var table = document.getElementById("list").getElementsByTagName("tbody")[0];
+                console.log("table"+table);
                 
                 var newrow = table.insertRow(table.length);
                 console.log("table.length"+table.length);
@@ -158,14 +159,28 @@
                 console.log(data.email);
                 var cell1 = newrow.insertCell(1);
                     cell1.innerHTML = data.name;
-            }
-            // console.los
-            
+                    // console.los
+                    
+                    for(let i=0;i<table.rows.length;i++)
+                    {
+                        let a = table.rows[i].cells.length;
+                        for(let j=0;j<a;j++){
+                            
+                            if(table.rows[i].cells[j].innerText ==="url"){
+                                 console.log(i+" "+j)
+    }
+                        }
+                    }
+
+                
+                }
 
    
     </script>
     
-
+    if(table.rows[i].cells[j].value ==="url"){
+        console.log(i+" "+j)
+    }
 </body>
 
     
