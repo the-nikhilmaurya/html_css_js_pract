@@ -17,6 +17,7 @@
         
     });
 
+
     function validateID(value)
     {
         // console.log(typeof value)
@@ -56,6 +57,42 @@
         
     }
 
+    function validateName(name){
+        if(name == "")
+        {
+            document.getElementById("isNameValid").innerHTML="Name is required"
+            return false
+        }
+        else
+        {
+            document.getElementById("isNameValid").innerHTML=""
+            return true;
+        }
+    }
+
+    function validateGender(gender){
+        if(gender == "select"){
+            document.getElementById("isGenderValid").innerHTML="select gender"
+            return false
+        }
+        else{
+            document.getElementById("isGenderValid").innerHTML=""
+            return true
+        }
+    }
+
+    function validateDesg(desg){
+        if(desg == "select"){
+            document.getElementById("isDesgValid").innerHTML="select Designation"
+            return false
+        }
+        else{
+            document.getElementById("isDesgValid").innerHTML=""
+            return true
+        }
+    }
+
+
     function readData()         // this will help in reading the form data
     {
         var formdata = {}
@@ -73,7 +110,7 @@
     {
         
         // console.log("validdation"+validateID(data.id1))
-        if(validateID(data.id1)==true && validateAge(data.age)==true){
+        if(validateID(data.id1) && validateAge(data.age)  && validateName(data.name) && validateGender(data.gender) && validateDesg(data.designation)){
         
         var table = document.getElementById("myTable").getElementsByTagName("tbody")[0];          
                 //[0] indicates the first tbody within the mytable
@@ -88,9 +125,12 @@
 
         var cell2 = newRow.insertCell(2);
             cell2.innerHTML = data.age;
-
+        
+        
         var cell3 = newRow.insertCell(3);
             cell3.innerHTML = data.image;
+
+        cell3.className="imagehide";    
 
         var cell4 = newRow.insertCell(4);
             cell4.innerHTML = data.gender;
