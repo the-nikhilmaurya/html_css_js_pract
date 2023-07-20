@@ -2,20 +2,25 @@
     let primaryToken=[];
     // event.preventDefault();
     
-        const form = document.getElementById("myForm");
-        form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        // event.stopPropagation();
-        // console.log(readData());
-        // var formdata = readData();
+    //     const form = document.getElementById("myForm");
+    //     form.addEventListener('submit', (event) => {
+    //     event.preventDefault();
+    //     // event.stopPropagation();
+    //     // console.log(readData());
+    //     // var formdata = readData();
             
-        // validateID(formdata.id1)
+    //     // validateID(formdata.id1)
+    //     var formdata = readData();
+        
+    //     insertData(formdata);
+    // });
+
+
+    function inputForm(){
+        event.preventDefault();
         var formdata = readData();
-        
         insertData(formdata);
-        
-        
-    });
+    }    
 
 
     function validateID(value)
@@ -61,11 +66,13 @@
         if(name == "")
         {
             document.getElementById("isNameValid").innerHTML="Name is required"
+            document.getElementById("isNameValid_edit").innerHTML="Name is required"
             return false
         }
         else
         {
             document.getElementById("isNameValid").innerHTML=""
+            document.getElementById("isNameValid_edit").innerHTML=""
             return true;
         }
     }
@@ -73,10 +80,12 @@
     function validateGender(gender){
         if(gender == "select"){
             document.getElementById("isGenderValid").innerHTML="select gender"
+            document.getElementById("isGenderValid_edit").innerHTML="select gender"
             return false
         }
         else{
             document.getElementById("isGenderValid").innerHTML=""
+            document.getElementById("isGenderValid_edit").innerHTML=""
             return true
         }
     }
@@ -84,10 +93,12 @@
     function validateDesg(desg){
         if(desg == "select"){
             document.getElementById("isDesgValid").innerHTML="select Designation"
+            document.getElementById("isDesgValid_edit").innerHTML="select Designation"
             return false
         }
         else{
             document.getElementById("isDesgValid").innerHTML=""
+            document.getElementById("isDesgValid_edit").innerHTML=""
             return true
         }
     }
@@ -160,14 +171,14 @@
         }
         else if(Number.isInteger(parseInt(value))==true){
             let a =  parseInt(value)
-            if(a>=18 && a<=60){
+            if((a >= 15 && a <=35) || (a >= 45 && a <= 65)){
                 document.getElementById('isAgeValid').innerHTML="";         
                 document.getElementById('isAgeValid_edit').innerHTML="";         
                 return true;
             }
             else{
-                document.getElementById('isAgeValid').innerHTML="age must be within 18 and 60";
-                document.getElementById('isAgeValid_edit').innerHTML="age must be within 18 and 60";
+                document.getElementById('isAgeValid').innerHTML="age must be within 15 to 35 and 45 to 65";
+                document.getElementById('isAgeValid_edit').innerHTML="age must be within 15 to 35 and 45 to 65";
                 return false;
             }
         }
@@ -189,10 +200,13 @@
         table.removeChild(row);
         // console.log(primaryToken)
     }
+
     // to traverse through table cell index
     var idx = null;
     console.log("idx befoer= "+idx)
-    function onEdit(value)
+
+    
+    function onEdit(value)      // edit section here
     {
         idx=null
         document.getElementById("editable").style.display='block';
@@ -213,7 +227,9 @@
         console.log("idx after= "+idx)
     }
 
-    function update(){
+
+    function update()           //once edited data is updated here
+    {
         event.preventDefault();
         // console.log("idx update= "+idx)
         var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
@@ -234,8 +250,9 @@
     }
 
 
-    //view section
-    function onView(target){
+   
+    function onView(target)      //view section
+    {
         var cellindx=null
         document.getElementById("view").style.display='block';
         var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
@@ -256,9 +273,38 @@
         // document.getElementById("view").style.display='none'
     }
 
-    function viewDone(){
+    function viewDone()             //once view done widnow closes
+    {
         document.getElementById("view").style.display='none'
     }
+
+    function searchData()  //search data 
+    {
+        event.preventDefault();
+        let target = document.getElementById("searchFor").value;
+        // console.log(target);
+        var regex = '\w'+ target
+
+        var table = document.getElementById("myTable").getElementsByTagName("tbody")[0];
+        for(let i=0;i<table.rows.length;i++)
+                    {
+                        let a = table.rows[i].cells.length;
+                        for(let j=0;j<a-1;j++){
+                            var ab = table.rows[i].cells[j].innerText;
+                            console.log(ab)
+                            if(ab == target)
+                            {
+                                table.rows[i].cells[j].style.animation= 'example';
+                                table.rows[i].cells[j].style.color="red";
+                                 console.log(i+" "+j)
+                            }
+                        }
+                    }
+
+    }
+
+
+
     // trypart
     // if value.parse
         // if(value == ""){
@@ -272,3 +318,4 @@
         //         return false;
         //     }
         // } 
+

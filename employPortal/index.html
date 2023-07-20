@@ -35,14 +35,15 @@
     <div class="container text-center">     <!-- main container class start -->
 
       <!-- editable placed here (will help to edit my data entries)-->
-      <div class="card mt-5 " id="editable"  >
+      <div class="container d-flex justify-content-center w-50">
+      <div class="card mt-5 mb-5 " id="editable"  > 
           <form action="#" id="edit_form" onsubmit="update()">
             <div class="mb-4 mt-5 d-flex justify-content-md-start">
               <label class="ps-2"  for="edit_id1" ><b>ID:<span class="text-white">......</span></b></label>
               <input id="edit_id1" name='id' class="input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value='' disabled  >
-  
             </div>
-  
+
+            <span class="danger" id="isNameValid_edit"></span>
             <div class="mb-4 d-flex justify-content-md-start">
               <label class="ps-2"  for="edit_name"><b>Name:</b></label>
               <input id="edit_name" name='name' class=" input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value=''>
@@ -54,11 +55,13 @@
               <input id="edit_age" name='name' class=" input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value=''>
             </div>
   
+
             <div class="mb-4 d-flex justify-content-md-start">
               <label class="me-0 ps-2"  for="edit_image"><b>Image:</b></label>
               <input id="edit_image" name='image' class=" input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value=''>
             </div>
   
+            <span class="danger" id="isGenderValid_edit"></span>
             <div class="mb-4 d-flex justify-content-md-start ">
               <label class="me-3 ps-2 "  for="edit_gender"><b>Gender:</b></label>                      
                 <select id="edit_gender" class="input-sm pb-0 pt-1 me-2 ps-3" style="width:100%; "> 
@@ -69,6 +72,7 @@
                 </select>
             </div>
             
+            <span class="danger" id="isDesgValid_edit"></span>
             <div class="mb-4 d-flex justify-content-md-start">
               <label class="me-3 ps-2"  for="edit_designation"><b>Designation:</b></label>                      
                 <select id="edit_designation" class="input-sm pb-0 pt-1 me-2 pe-3 " >
@@ -85,8 +89,8 @@
           </form>
   
           
+        </div>
         </div>    <!-- editable end here -->
-
       <!-- view section starts here -->
       <div class="container d-flex justify-content-center " >
       <div class="card mt-5 mb-0 " id="view" style="width: 18rem;">
@@ -135,20 +139,21 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <h2 id="h2_gallery"  class="mt-0 mb-0 text-uppercase   shadow-sm bg-light ">Employee Portal</h2>
-            <form class="d-flex justify-content-end">
-              <input class="form-control me-2 d-flex justify-content-end" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+            <form class="d-flex justify-content-end" onsubmit="searchData()">
+              <input id="searchFor" class="form-control me-2 d-flex justify-content-end" type="search" placeholder="Search" aria-label="Search">
+              <button id="" class="btn btn-outline-success" type="submit">Search</button>
             </form>
           
         </div>
       </nav>
+      <!-- nav ended -->
 
         
             <div class="row gx-5 mt-5">
 
               <!-- first half start -->
               <div class="col-lg-3 d-flex justify-content-center pb-5" id="one">  
-                <form  id="myForm"  >
+                <form  id="myForm" onsubmit="inputForm()"  >
                 
                 <div class="card">
                 <!-- <div class=""> -->
@@ -226,29 +231,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th >1</th>
-                      <td>Mark</td>
-                      <td>25</td>
-                      <td>Male</td>
-                      <td>Solution Analyst</td>
-                      <td>url</td>
-                      <td><button type="view" onclick="onView(this)" class="btn btn-success">VIEW</button>
-                        <button type="edit" onclick="onEdit(this)" class="btn btn-secondary">EDIT</button>
-                        <button type="delete" onclick="onDelete(this)" class="btn btn-danger">DELETE</button></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
+                    
                     
                 
                   </tbody>
