@@ -14,7 +14,13 @@
         box-shadow: 12px 12px 22px grey;
         height:100%;
       }
-  
+  #editable,.imageHide{
+    display: none;
+    
+  }
+  #view{
+    display: none;
+  }
     .danger{
       color: red;
     }
@@ -27,14 +33,113 @@
   </head>
 <body>
     <div class="container text-center">     <!-- main container class start -->
-      <h2 id="h2_gallery"  class="mt-3 text-uppercase   shadow-sm bg-light rounded mb-3">Employee Portal</h2>
+
+      <!-- editable placed here (will help to edit my data entries)-->
+      <div class="card mt-5 " id="editable"  >
+          <form action="#" id="edit_form" onsubmit="update()">
+            <div class="mb-4 mt-5 d-flex justify-content-md-start">
+              <label class="ps-2"  for="edit_id1" ><b>ID:<span class="text-white">......</span></b></label>
+              <input id="edit_id1" name='id' class="input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value='' disabled  >
+  
+            </div>
+  
+            <div class="mb-4 d-flex justify-content-md-start">
+              <label class="ps-2"  for="edit_name"><b>Name:</b></label>
+              <input id="edit_name" name='name' class=" input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value=''>
+            </div>
+  
+            <small id="isAgeValid_edit" class="danger"> </small>   
+            <div class="mb-4 d-flex justify-content-md-start">
+              <label class="me-3 ps-2"  for="edit_age"><b>Age:</b></label>
+              <input id="edit_age" name='name' class=" input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value=''>
+            </div>
+  
+            <div class="mb-4 d-flex justify-content-md-start">
+              <label class="me-0 ps-2"  for="edit_image"><b>Image:</b></label>
+              <input id="edit_image" name='image' class=" input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value=''>
+            </div>
+  
+            <div class="mb-4 d-flex justify-content-md-start ">
+              <label class="me-3 ps-2 "  for="edit_gender"><b>Gender:</b></label>                      
+                <select id="edit_gender" class="input-sm pb-0 pt-1 me-2 ps-3" style="width:100%; "> 
+                  <option selected>select</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Female">Others</option>
+                </select>
+            </div>
+            
+            <div class="mb-4 d-flex justify-content-md-start">
+              <label class="me-3 ps-2"  for="edit_designation"><b>Designation:</b></label>                      
+                <select id="edit_designation" class="input-sm pb-0 pt-1 me-2 pe-3 " >
+                  <option selected>select</option>
+                  <option value="Solution Analyst">Solution Analyst</option>
+                  <option value="Team relentness">Team relentness</option>
+                  <option value="Human resource">Human resource</option>
+                </select>
+            </div>
+  
+            <div class="mb-4 d-flex justify-content-center">
+              <button  id="editableButton" type="submit" class="btn btn-dark ps-5 pe-5">SAVE</button>
+            </div>
+          </form>
+  
+          
+        </div>    <!-- editable end here -->
+
+      <!-- view section starts here -->
+      <div class="container d-flex justify-content-center " >
+      <div class="card mt-5 mb-0 " id="view" style="width: 18rem;">
+        <img id="selfImage" src="" class="card-img-top" alt="wrong url ">
+        <div class="card-body">
+         
+            <div class="mb-1 d-flex justify-content-md-start">
+              <label class="ps-2"  for="view_id1" ><b>ID:<span class="text-white">......</span></b></label>
+              <input id="view_id1" name='id' class="input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value='' disabled  >
+  
+            </div>
+  
+            <div class="mb-1 d-flex justify-content-md-start">
+              <label class="ps-2"  for="view_name"><b>Name:</b></label>
+              <input id="view_name" name='name' class=" input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value='' disabled >
+            </div>
+  
+            
+            <div class="mb-1 d-flex justify-content-md-start">
+              <label class="me-3 ps-2"  for="view_age"><b>Age:</b></label>
+              <input id="view_age" name='name' class=" input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value='' disabled>
+            </div>
+  
+  
+            <div class="mb-1 d-flex justify-content-md-start ">
+              <label class="me-3 ps-2 "  for="view_gender"><b>Gender:</b></label>                      
+              <input id="view_gender" name='name' class=" input input-sm ms-0 me-1 rounded-2" style="width:100%" type="text" value='' disabled >
+                
+            </div>
+            
+            <div class="mb-1 d-flex justify-content-md-start">
+              <label class="me-3 ps-2"  for="view_designation"><b>Designation:</b></label>    
+              <input id="view_designation" name='name' class=" input input ms-0 me-1 rounded-2" style="width:100%" type="text" value='' disabled>
+            </div>
+  
+            <div class="mb-2 d-flex justify-content-center">
+              <button onclick="viewDone()"  id="viewDone" type="submit" class="btn btn-dark ps-5 pe-5">DONE</button>
+            </div>
+        
+        </div>
+      </div>
+    </div>
+    <!-- view section end here -->
+
+      <!-- main heading -->
+      <h2 id="h2_gallery"  class="mt-0 mb-5 text-uppercase   shadow-sm bg-light rounded mb-3 fixed-top">Employee Portal</h2>
 
         
-            <div class="row gx-5">
+            <div class="row gx-5 mt-5">
 
               <!-- first half start -->
               <div class="col-lg-3 d-flex justify-content-center pb-5" id="one">  
-                <form  id="myForm" >
+                <form  id="myForm"  >
                 
                 <div class="card">
                 <!-- <div class=""> -->
@@ -52,7 +157,7 @@
                       <input id="name" name='name' class=" input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value=''>
                     </div>
 
-                    <small id="isAgeValid" class="danger"> </small>   
+                    <span id="isAgeValid" class="danger"> </span>   
                     <div class="mb-4 d-flex justify-content-md-start">
                       <label class="me-3 ps-2"  for="age"><b>Age:</b></label>
                       <input id="age" name='name' class=" input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value=''>
@@ -103,7 +208,7 @@
                       <th scope="col">ID</th>
                       <th scope="col">Name</th>
                       <th scope="col">Age</th>
-                      <th scope="col">Image</th>
+                      <th class="imageHide" scope="col">Image</th>
                       <th scope="col">Gender</th>
                       <th scope="col">Designation</th>
                       <th scope="col">Action</th>
@@ -111,15 +216,15 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row">1</th>
+                      <th >1</th>
                       <td>Mark</td>
                       <td>25</td>
                       <td>Male</td>
                       <td>Solution Analyst</td>
                       <td>url</td>
-                      <td><button type="button" class="btn btn-success">VIEW</button>
-                        <button type="button" class="btn btn-secondary">EDIT</button>
-                        <button type="button" class="btn btn-danger">DELETE</button></td>
+                      <td><button type="view" onclick="onView(this)" class="btn btn-success">VIEW</button>
+                        <button type="edit" onclick="onEdit(this)" class="btn btn-secondary">EDIT</button>
+                        <button type="delete" onclick="onDelete(this)" class="btn btn-danger">DELETE</button></td>
                     </tr>
                     <tr>
                       <th scope="row">2</th>
@@ -141,10 +246,11 @@
 
             </div>
             <!-- second half done -->
-         
+            </div>  <!-- row khatam -->
+
+    
 
     </div>      <!-- main container class end -->
-
     <!-- javascript source -->
     <script src="index.js"></script>
 </body>
