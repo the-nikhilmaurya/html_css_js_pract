@@ -15,11 +15,13 @@
         height:100%;
       }
   
-        
+    .danger{
+      color: red;
+    }
       
-      body {
-        background: rgb(219, 226, 226);
-      }
+    body {
+      background: rgb(219, 226, 226);
+    }
 
     </style>
   </head>
@@ -37,14 +39,12 @@
                 <div class="card">
                 <!-- <div class=""> -->
                     <h3>Employee Registration</h3>
-                    <br><span class="text-bs-danger" id="isIdValid"></span>
 
+                    <span class="danger" id="isIdValid"></span>
                     <div class="mb-4 mt-0 d-flex justify-content-md-start">
                       <label class="ps-2"  for="id1" ><b>ID:<span class="text-white">......</span></b></label>
                       <input id="id1" name='id' class="input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value='' >
 
-                      <small id="isIdValid" class="text-danger">
-                      </small>  
                     </div>
 
                     <div class="mb-4 d-flex justify-content-md-start">
@@ -52,6 +52,7 @@
                       <input id="name" name='name' class=" input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value=''>
                     </div>
 
+                    <small id="isAgeValid" class="danger"> </small>   
                     <div class="mb-4 d-flex justify-content-md-start">
                       <label class="me-3 ps-2"  for="age"><b>Age:</b></label>
                       <input id="age" name='name' class=" input input-sm ms-4 me-2 rounded-2" style="width:100%" type="text" value=''>
