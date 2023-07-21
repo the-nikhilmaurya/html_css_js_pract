@@ -140,8 +140,7 @@
         
         var cell3 = newRow.insertCell(3);
             cell3.innerHTML = data.image;
-
-        cell3.className="imagehide";    
+    
 
         var cell4 = newRow.insertCell(4);
             cell4.innerHTML = data.gender;
@@ -280,28 +279,79 @@
 
     function searchData()  //search data 
     {
-        event.preventDefault();
+        // event.preventDefault();
+        document.getElementById('searchOffButton').style.display='block'
         let target = document.getElementById("searchFor").value;
         // console.log(target);
-        var regex = '\w'+ target
-
         var table = document.getElementById("myTable").getElementsByTagName("tbody")[0];
-        for(let i=0;i<table.rows.length;i++)
-                    {
-                        let a = table.rows[i].cells.length;
-                        for(let j=0;j<a-1;j++){
-                            var ab = table.rows[i].cells[j].innerText;
-                            console.log(ab)
-                            if(ab == target)
-                            {
-                                table.rows[i].cells[j].style.animation= 'example';
-                                table.rows[i].cells[j].style.color="red";
-                                 console.log(i+" "+j)
-                            }
-                        }
-                    }
+        
+        for(let i=0;i<table.rows.length;i++)    
+        {
+            // console.log(table.rows[i].childNodes)
+            let flag = true
+            for (let j=0;j<table.rows[i].cells.length;j++)
+            {
+                if(table.rows[i].cells[j].innerText == target)
+                {
+                    flag = false
+                }
+                
+            }
+            if(flag)
+                {
+                    hideChildNodes(i,table.rows[i].cells.length)
+                }
+            
+        }
+
+        
+        document.getElementById("searchButton").style.display="none"          
+    }
+
+    function searchOff()
+    {
+         
+        console.log("normal")
+        var table = document.getElementById("myTable").getElementsByTagName("tbody")[0];
+
+        showChildNodes()
+
+
+        document.getElementById("searchButton").style.display="block"          
+        document.getElementById('searchOffButton').style.display='none'
+        document.getElementById("searchFor").value="";
 
     }
+ 
+    let rowArr = []
+    function hideChildNodes(rowIdx,cellIdx)
+    {
+        rowArr.push(rowIdx)
+        console.log("r = "+rowIdx+"  c= "+cellIdx)
+        var table = document.getElementById("myTable").getElementsByTagName("tbody")[0];
+        for (let i=0;i<cellIdx;i++)
+        {
+            table.rows[rowIdx].children[i].style.display="none"
+
+        }
+        console.log(rowArr)
+    }
+
+    function showChildNodes()
+    {
+        console.log("showchildnodes")
+        var table = document.getElementById("myTable").getElementsByTagName("tbody")[0];
+        for (let i=0;i<rowArr.length;i++)
+        {
+            for(let j=0;j<7;j++)
+            {
+                
+                table.rows[rowArr[i]].children[j].style.display=""
+            }
+        }
+    }
+    
+    
 
 
 
