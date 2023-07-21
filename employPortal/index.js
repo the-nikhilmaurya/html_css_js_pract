@@ -280,33 +280,35 @@
 
     function searchData()  //search data 
     {
-        // event.preventDefault();
-        document.getElementById('searchOffButton').style.display='block'
+        
         let target = document.getElementById("searchFor").value;
-        // console.log(target);
-        var table = document.getElementById("myTable").getElementsByTagName("tbody")[0];
-        
-        for(let i=0;i<table.rows.length;i++)    
+        if(target == "" || target == "input something"  )
         {
-            // console.log(table.rows[i].childNodes)
-            let flag = true
-            for (let j=0;j<table.rows[i].cells.length;j++)
-            {
-                if(table.rows[i].cells[j].innerText == target)
-                {
-                    flag = false
-                }
-                
-            }
-            if(flag)
-                {
-                    hideChildNodes(i,table.rows[i].cells.length)
-                }
-            
+            document.getElementById("searchFor").placeholder = "input something"
+            // event.preventDefault();
+            document.getElementById("searchButton").Disabled=true
         }
+        else
+        {
+            document.getElementById('searchOffButton').style.display='block'
+            // console.log(target);
+            var table = document.getElementById("myTable").getElementsByTagName("tbody")[0];
 
-        
-        document.getElementById("searchButton").style.display="none"          
+                let flag = true
+                for (let j=0;j<table.rows.length;j++)
+                {
+                    if(table.rows[j].cells[1].innerText == target)
+                    {
+                        flag = false
+                    }
+                    if(flag)
+                    {
+                        hideChildNodes(j,table.rows[j].cells.length)
+                    }
+            
+                }
+                document.getElementById("searchButton").style.display="none" 
+            }         
     }
 
     function searchOff()
