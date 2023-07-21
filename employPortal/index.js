@@ -140,6 +140,7 @@
         
         var cell3 = newRow.insertCell(3);
             cell3.innerHTML = data.image;
+            cell3.className="imgHide"
     
 
         var cell4 = newRow.insertCell(4);
