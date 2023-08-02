@@ -1,0 +1,65 @@
+div{
+    height: 100px;
+    width: 100px;
+    background-color: brown;
+    border: 2px solid black;
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+
+}
+
+
+/* static is by defalut it does not get affect by top,right,left,bottom or z-index */
+#static{            
+    height: 100px;
+    width: 100px;
+    background-color: brown; 
+    position: static;
+    /* top:100px;
+    left: 100px; */
+}
+
+
+/* relative : the offset is relative to itself based on the values of top,right,bottom,left 
+basically that means it changes its position from its original position*/
+#relative{            
+    height: 100px;
+    width: 100px;
+    background-color: brown; 
+    position: relative;
+    top:100px;
+    left: 100px;
+}
+
+/* absolute : It get placed based on its closest ancestor if any, otherwise directly calculation from body object 
+the absolute place is fixed we can add something to its original place even when we absolut them */
+#absolute{            
+    height: 100px;
+    width: 100px;
+    background-color: brown; 
+    position: absolute;
+    top:100px;
+    left: 100px;
+}
+
+
+/* fixed : It's position gets calculated from view port adjustment. unlike the absolute it does not cosumes any space */
+#fixed{            
+    height: 100px;
+    width: 100px;
+    background-color: brown; 
+    position: fixed;
+    top:100px;
+    left: 100px;
+}
+
+/* sticky */
+#sticky{            
+    
+    background-color: brown; 
+    position:sticky;
+    top:10px;
+    bottom: 0;
+    /* left: 100px; */
+}
